@@ -53,7 +53,7 @@ class App extends Component {
           <p>Tarefa deletada</p>
         ) : (<p></p>)}
 
-        <p>Total de tarefas: {this.state.tarefas.length}</p>
+        <p style={{color: this.state.tarefas.length > 3 ? 'red' : 'black'}}>Total de tarefas: {this.state.tarefas.length}</p>
       </div>
     );
   }
