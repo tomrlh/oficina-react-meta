@@ -52,6 +52,8 @@ class App extends Component {
         {this.state.tarefaDeletada ? (
           <p>Tarefa deletada</p>
         ) : (<p></p>)}
+
+        <p>Total de tarefas: {this.state.tarefas.length}</p>
       </div>
     );
   }
