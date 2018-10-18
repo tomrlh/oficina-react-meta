@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
 
+function Tarefa(props) {
+  return (
+    <li
+      onClick={() => {props.tarefaClicada(props.tarefaNome)}}>
+      {props.tarefaNome}
+    </li>
+  )
+}
+
 class App extends Component {
   state = {
     tarefas: ['Tarefa 1', 'Tarefa 2'],
     novaTarefa: '',
     tarefaDeletada: false
   }
+
+
+
 
   adicionarTarefa() {
     let tarefasAntigas = this.state.tarefas
@@ -43,9 +55,10 @@ class App extends Component {
         <ul>
           {this.state.tarefas.map(
             (tarefa, index) => {
-              return <li key={index} onClick={() => {this.removerTarefa(tarefa)}}>
-                {tarefa}
-              </li>
+              return <Tarefa
+                key={index}
+                tarefaIndex={index} tarefaNome={tarefa}
+                tarefaClicada={this.removerTarefa.bind(this)}/>
             }
           )}
         </ul>
