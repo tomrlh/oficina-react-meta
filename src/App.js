@@ -4,13 +4,15 @@ import './App.css';
 class App extends Component {
   state = {
     tarefas: ['Tarefa 1', 'Tarefa 2'],
-    novaTarefa: ''
+    novaTarefa: '',
+    tarefaDeletada: false
   }
 
   adicionarTarefa() {
     let tarefasAntigas = this.state.tarefas
     this.setState({
-      tarefas: tarefasAntigas.concat(this.state.novaTarefa)
+      tarefas: tarefasAntigas.concat(this.state.novaTarefa),
+      tarefaDeletada: false
     })
   }
 
@@ -26,7 +28,8 @@ class App extends Component {
     this.setState({
       tarefas: tarefasAntigas.filter(
         (tarefa, index) => {return index != posicao}
-      )
+      ),
+      tarefaDeletada: true
     })
   }
 
@@ -46,6 +49,9 @@ class App extends Component {
             }
           )}
         </ul>
+        {this.state.tarefaDeletada ? (
+          <p>Tarefa deletada</p>
+        ) : (<p></p>)}
       </div>
     );
   }
