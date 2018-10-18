@@ -20,6 +20,16 @@ class App extends Component {
     })
   }
 
+  removerTarefa(tarefaId) {
+    let tarefasAntigas = this.state.tarefas
+    let posicao = tarefasAntigas.indexOf(tarefaId)
+    this.setState({
+      tarefas: tarefasAntigas.filter(
+        (tarefa, index) => {return index != posicao}
+      )
+    })
+  }
+
   render() {
     return (
       <div>
@@ -30,7 +40,9 @@ class App extends Component {
         <ul>
           {this.state.tarefas.map(
             (tarefa, index) => {
-              return <li key={index}>{tarefa}</li>
+              return <li key={index} onClick={() => {this.removerTarefa(tarefa)}}>
+                {tarefa}
+              </li>
             }
           )}
         </ul>
